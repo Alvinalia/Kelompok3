@@ -1,15 +1,11 @@
-@extends('layouts.app')
+@include('navbarrr')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                @include('navbarrr')
+<html>
+	<head>
+		<title></title>
+	</head>
 
-                <div class="card-body">
-                <table width="20">
+	<body>
 	<center>
 		<h1><b><font color="#bdc65b">Playlist Hits</font></b></h1>
 		<img src="{{ URL('img/cd_5_angle.jpg')}}" width="200" height="200">
@@ -27,9 +23,5 @@
 		</td>
 	</tr>
 	</table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+</body>
+</html>

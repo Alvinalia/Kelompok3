@@ -10,14 +10,15 @@ class Label extends Model
 
     use HasFactory;
 
-    protected $fillabel = [
+    protected $fillable = [
         'id',
         'nama',
         'alamat',
-        'penyayi_id',
+        'penyanyi_id',
     ];
     protected $table = "label";
     protected $protected = "id";
+    public $timestamps = false;
 
     public function Penyanyi()
     {
@@ -26,10 +27,6 @@ class Label extends Model
     
     public function Musik(){
         return $this->hasMany(Musik::class, "Label_id", "id");
-    }
-
-    public function User(){
-        return $this->hasMany(User::class, "label_id", "id");
     }
 
 }

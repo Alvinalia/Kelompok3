@@ -10,10 +10,13 @@ class Musik extends Model
     use HasFactory;
 
     protected $table = "musik";
+    public $timestamps = false;
     protected $primaryKey = "id";
+    protected $fillable = [
+        'id', 'nama', 'label_id'];
 
-    public function GenreMusik(){
-        return $this->belongsTo(GenreMusik::class, "id_musik"); 
+    public function Genre(){
+        return $this->belongsToMany(Genre::class,'genre_musik', 'id_genre',"id_musik"); 
     }
 
     public function Label(){

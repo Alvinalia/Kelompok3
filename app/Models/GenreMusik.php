@@ -9,9 +9,19 @@ class GenreMusik extends Model
 {
     use HasFactory;
 
-    protected $table = "genre_musik";
+    protected $fillable = [
+        'id',
+        'id_musik',
+        'id_genre',
+    ];
+    protected $table = 'genre_musik';
+    public $timestamps = false;
 
-    public function genre_musik(){
+    public function Genre(){
         return $this->belongsTo(Genre::class, "id_genre", "id");
     }
+    public function Musik(){
+        return $this->belongsTo(Musik::class, "id_musik", "id");
+    }
+
 }

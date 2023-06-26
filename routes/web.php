@@ -10,33 +10,69 @@ use App\Http\Controllers\PenyanyiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MusikController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\home2Controller;
-use App\Http\Controllers\LoginControllers;
+//use App\Http\Controllers\LogController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
+//Route::get('/', [LoginController::class, 'login'])->name('login');
+//Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actionlogin');
+
+//Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+//Route::post('/home', [HomeController::class, 'index']);
+//Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/', function(){
-    return view('/login');
+    Route::get('/', function (){
+    return view('/home');
     });
-    Route::get('/login', [LoginControllers::class, 'login']);
-    Route::get('/register', [LoginControllers::class, 'login']);
-    Route::get('/home', [HomeController::class, 'index']);
-    Route::get('/home2', [home2Controller::class, 'index3']);
+    //Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+    //Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
+
+
+    
     Route::get('/actionlogout', [LoginController::class, 'actionlogout']);
 
+    Route::get('/GenreMusik',[GenreMusikController::class,'index']);
+    Route::get('/create1',[GenreMusikController::class,'create1']);
+    Route::post('/GenreMusik',[GenreMusikController::class,'store']);
+    Route::get('/edit1/{id}',[GenreMusikController::class,'edit1']);
+    Route::put('/GenreMusik/{id}',[GenreMusikController::class,'update']);
+    Route::delete('/GenreMusik/{id}',[GenreMusikController::class,'destroy']);
+    Route::get('/Musik',[MusikController::class,'index']);
+
+    Route::get('/Musik',[MusikController::class,'index']);
+    Route::get('/create2',[MusikController::class,'create2']);
+    Route::post('/Musik',[MusikController::class,'store']);
+    Route::get('/edit2/{id}',[MusikController::class,'edit2']);
+    Route::put('/Musik/{id}',[MusikController::class,'update']);
+    Route::delete('/Musik/{id}',[MusikController::class,'destroy']);
+    
     Route::get('/Penyanyi',[PenyanyiController::class,'index']);
+    Route::get('/create4',[PenyanyiController::class,'create4']);
+    Route::post('/Penyanyi',[PenyanyiController::class,'store']);
+    Route::get('/edit4/{id}',[PenyanyiController::class,'edit4']);
+    Route::put('/Penyanyi/{id}',[PenyanyiController::class,'update']);
+    Route::delete('/Penyanyi/{id}',[PenyanyiController::class,'destroy']);
+    // Route::put('/Penyanyi/{id}',[PenyanyiController::class,'index']);
+
+    Route::get('/Label',[LabelController::class,'index']);
+    Route::get('/create3',[LabelController::class,'create3']);
+    Route::post('/Label',[LabelController::class,'store']);
+    Route::get('/edit3/{id}',[LabelController::class,'edit3']);
+    Route::put('/Label/{id}',[LabelController::class,'update']);
+    Route::delete('/Label/{id}',[LabelController::class,'destroy']);
+    
+    Route::get('/Genre',[GenreController::class,'index']);
+    Route::get('/create5',[GenreController::class,'create']);
+    Route::post('/Genre',[GenreController::class,'store']);
+    Route::get('/edit5/{id}',[GenreController::class,'edit5']);
+    Route::put('/Genre/{id}',[GenreController::class,'update']);
+    Route::delete('/Genre/{id}',[GenreController::class,'destroy']);
+    // Route::get('/Musik',[GenreController::class,'index']);
+
     Route::get('/Genre',[GenreController::class,'index']);
     Route::get('/GenreMusik',[GenreMusikController::class,'index']);
     Route::get('/Label',[LabelController::class,'index']);
@@ -49,9 +85,9 @@ Route::middleware(['auth'])->group(function(){
     Route::put('/User/{id}',[UserController::class,'update']);
     Route::delete('/User/{id}',[UserController::class,'destroy']);
     Route::get('/Musik',[MusikController::class,'index']);
-});
 
+});
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
